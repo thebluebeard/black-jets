@@ -13,9 +13,9 @@ User.delete_all
 JET_MODELS = ["Cessna 210","Focker 23","Concord 4","Bombarbier 210","Rafale","Turboprop 1","X-Wings 12","Dufourspitze 1","Kangchenjunga","Cerro Arripo"]
 MEAL = ["Vegetarian","Japanese","Indian","French","Italian"]
 
-def generate_jets
+def generate_jets(jet_owner)
   rand(1..4).times do
-    Jet.create(user_id: User.all.sample.id,
+    Jet.create(user_id: jet_owner.id,
       plane_model: JET_MODELS.sample,
       seat_number: rand(7..20),
       production_year: rand(1990..2017),
@@ -32,7 +32,7 @@ end
     password:"123456",
     phone: Faker::PhoneNumber.cell_phone,
     jet_owner: rand > 0.7)
-  generate_jets if a.jet_owner
+  generate_jets(a) if a.jet_owner
 end
 puts "Users seeded"
 

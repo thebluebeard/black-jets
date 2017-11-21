@@ -9,8 +9,8 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema.define(version: 20171121073327) do
 
+ActiveRecord::Schema.define(version: 20171121073327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,14 +29,15 @@ ActiveRecord::Schema.define(version: 20171121073327) do
     t.integer  "jet_id"
     t.string   "origin"
     t.string   "destination"
-
     t.integer  "price"
     t.string   "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.datetime "arrival"
-    t.datetime "departure"
-
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.date     "arrival"
+    t.date     "departure"
+    t.integer  "capacity"
+    t.time     "arrival_time"
+    t.time     "departure_time"
     t.index ["jet_id"], name: "index_flights_on_jet_id", using: :btree
     t.index ["user_id"], name: "index_flights_on_user_id", using: :btree
   end
