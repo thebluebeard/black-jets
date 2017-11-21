@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 20171121090858) do
     t.integer  "jet_id"
     t.string   "origin"
     t.string   "destination"
-    t.datetime "departure"
-    t.datetime "arrival"
     t.integer  "price"
     t.string   "status"
+    t.integer  "capacity"
+    t.datetime "arrival"
+    t.datetime "departure"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "capacity"
     t.index ["jet_id"], name: "index_flights_on_jet_id", using: :btree
     t.index ["user_id"], name: "index_flights_on_user_id", using: :btree
   end

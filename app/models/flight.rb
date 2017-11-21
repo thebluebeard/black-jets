@@ -11,4 +11,5 @@ class Flight < ApplicationRecord
   #     find(:all)
   #   end
   # end
+
 end
