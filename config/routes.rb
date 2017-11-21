@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'bookings/new'
+
+  get 'bookings/create'
+
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
