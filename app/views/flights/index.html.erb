@@ -1,22 +1,14 @@
-<% if current_user.jet_owner %>
-<!-- flight owner version, not constrcted -->
-  <% @flights.each do |flight| %>
-    <div>
-      <h1><%= flight.jet.model %></h1>
-      <h2><%= flight.departure %></h2>
-      <h2><%= flight.price %></h2>
-      <%= link_to "book", flight_path(flight) %>
-    </div>
-  <% end %>
+<% if @flights.empty? %>
+  <h1>Sorry we don't have any result</h1>
 <% else %>
-
-<!-- non owner version -->
   <% @flights.each do |flight| %>
     <div>
-      <h1><%= flight.jet.model %></h1>
+      <h1><%= flight.jet.plane_model %></h1>
       <h2><%= flight.departure %></h2>
       <h2><%= flight.price %></h2>
       <%= link_to "book", flight_path(flight) %>
     </div>
   <% end %>
 <% end %>
+
+

@@ -1,10 +1,12 @@
 class FlightsController < ApplicationController
   def index
     if params
-      @flights = Flight.where(
-        origin: params[:origin],
-        destination: params[:destination],
-        departure: params[:departure],
+      @flights = Flight.where(["origin = ? and destination = ? and departure > ? and departure < ?",
+          params[:origin],
+          params[:destination],
+          "#{params[:departure].to_datetime}",
+          "#{params[:departure].to_datetime + 1}"
+        ]
       )
     else
       @flights = Flight.all
