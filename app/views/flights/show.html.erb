@@ -1,2 +1,12 @@
-<h1>Flights#show</h1>
-<p>Find me in app/views/flights/show.html.erb</p>
+<h1>Model <%= @flight.jet.model %></h1>
+<h2>departure date <%= @flight.departure %></h2>
+<h2>arrival date <%= @flight.arrival %></h2>
+
+<h2>the reviews</h2>
+<% @reviews.each do |r| %>
+  <p>r.ambiance_rating</p>
+  <p>r.service_rating</p>
+  <p>r.description</p>
+<% end %>
+
+<%= link_to "confirm and pay", new_booking_path %>
