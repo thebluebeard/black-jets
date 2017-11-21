@@ -1,10 +1,14 @@
 class FlightsController < ApplicationController
   def index
-    @flights = Flight.where(
-      origin: params[:origin],
-      destination: params[:destination],
-      departure: params[:departure],
-    )
+    if params
+      @flights = Flight.where(
+        origin: params[:origin],
+        destination: params[:destination],
+        departure: params[:departure],
+      )
+    else
+      @flights = Flight.all
+    end
   end
 
   def new
