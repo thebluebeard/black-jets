@@ -16,17 +16,19 @@ class FlightsController < ApplicationController
     @flight = flight.new(flight_params)
     @flight.save
     redirect_to root_path
+    # temporaritly direct to root_path
   end
 
   def show
     @flight = Flight.find(params[:id])
+    @reviews = Review.where(flight_id: @flight.id)
   end
+  # I'll leave the edit function for later, right now we just assume user creates a flight and don't change
+  # def edit
+  # end
 
-  def edit
-  end
-
-  def update
-  end
+  # def update
+  # end
 
   def destroy
     @flight = Flight.find(params[:id])
