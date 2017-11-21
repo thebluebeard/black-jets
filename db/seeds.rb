@@ -10,28 +10,33 @@ Flight.delete_all
 Jet.delete_all
 User.delete_all
 
+JET_MODELS = ["Cessna 210","Focker 23","Concord 4","Bombarbier 210","Rafale","Turboprop 1","X-Wings 12","Dufourspitze 1","Kangchenjunga","Cerro Arripo"]
+MEAL = ["Vegetarian","Japanese","Indian","French","Italian"]
+
+def generate_jets
+  rand(1..4).times do
+    Jet.create(user_id: User.all.sample.id,
+      plane_model: JET_MODELS.sample,
+      seat_number: rand(7..20),
+      production_year: rand(1990..2017),
+      wifi: rand > 0.5,
+      meal: MEAL.sample,
+      description: "A plane with wings")
+  end
+  puts "Jets seeded"
+end
+
 20.times do
-  User.create(username: Faker::Internet.user_name,
+  a = User.create(username: Faker::Internet.user_name,
     email: Faker::Internet.email,
     password:"123456",
     phone: Faker::PhoneNumber.cell_phone,
     jet_owner: rand > 0.7)
+  generate_jets if a.jet_owner
 end
 puts "Users seeded"
 
 
-JET_MODELS = ["Cessna 210","Focker 23","Concord 4","Bombarbier 210","Rafale","Turboprop 1","X-Wings 12","Dufourspitze 1","Kangchenjunga","Cerro Arripo"]
-MEAL = ["Vegetarian","Japanese","Indian","French","Italian"]
-7.times do
-  Jet.create(user_id: User.all.sample.id,
-    plane_model: JET_MODELS.sample,
-    seat_number: rand(7..20),
-    production_year: rand(1990..2017),
-    wifi: rand > 0.5,
-    meal: MEAL.sample,
-    description: "A plane with wings")
-end
-puts "Jets seeded"
 
 AIRPORTS = ["Paris","New York","Madrid","Oslo","New York","Chicago","Los Angeles","Bern","Shanghai","Beijing","Bangkok","Hanoi","Vientiane","Kuala Lumpur","Johannesburg","Buenos Aires"]
 20.times do
