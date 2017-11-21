@@ -1,2 +1,7 @@
-<h1>Flights#index</h1>
-<p>Find me in app/views/flights/index.html.erb</p>
+<% @flights.each do |flight| %>
+  <div>
+    <h1><%= flight.jet.username %></h1>
+    <h1><%= flight.jet.model %></h1>
+    <h2><%= flight.departure %></h2>
+  </div>
+<% end %>

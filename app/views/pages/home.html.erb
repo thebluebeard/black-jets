@@ -1,18 +1,20 @@
 
 
 <form action="/flights" method="get">
-  <label for="destination">Des: </label>
-  <input type="text" name="flight[destination]" id="destination">
+  <label for="From">Origin: </label>
+  <input type="text" name="origin" id="origin">
 
-  <label for="origin">Origin: </label>
-  <input type="text" name="flight[origin]" id="origin">
+  <label for="To">Des: </label>
+  <input type="text" name="destination" id="destination">
 
-  <label for="departure">Departure Date</label>
-  <input type="date" name="flight[departure]" id="departure">
+  <label for="departure">Date</label>
+  <input type="date" name="departure" id="departure">
+  <input type="time" name="departure" id="departure">
 
 
-  <label for="arrival">Arrival Date</label>
-  <input type="date" name="flight[arrival]" id="arrival">
+
+  <label>Passenger</label>
+  <%= select_tag(:passengers, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]])) %>
 
   <%= submit_tag("Search") %>
 </form>
