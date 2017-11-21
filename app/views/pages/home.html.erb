@@ -1,2 +1,21 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+
+<form action="/flights" method="get">
+  <label for="destination">Des: </label>
+  <input type="text" name="flight[destination]" id="destination">
+
+  <label for="origin">Origin: </label>
+  <input type="text" name="flight[origin]" id="origin">
+
+  <label for="departure">Departure Date</label>
+  <input type="date" name="flight[departure]" id="departure">
+
+
+  <label for="arrival">Arrival Date</label>
+  <input type="date" name="flight[arrival]" id="arrival">
+
+  <%= submit_tag("Search") %>
+</form>
+
+
+
