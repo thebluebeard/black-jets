@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col col-ms-4 col-sm-offset-4">
     <% if @flights.empty? %>
@@ -11,5 +12,7 @@
           <%= link_to "book", flight_path(flight) %>
         </div>
       <% end %>
+    <% end %>
   </div>
 </div>
+
