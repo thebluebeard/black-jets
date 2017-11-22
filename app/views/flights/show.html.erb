@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col col-ms-4 col-sm-offset-2">
+  <div class="col col-ms-4 col-sm-offset-1">
     <!-- display the flight info -->
     <h1><%= @flight.origin %> - <%= @flight.destination %></h1>
     <h2><%= @flight.departure.strftime('%a, %d %b') %></h2>
@@ -12,9 +12,12 @@
     <% am_rating_avg = am_rating_arr.reduce(:+) / am_rating_arr.length.to_f %>
     <% ser_rating_arr = @reviews.map { |review| review.service_rating } %>
     <% ser_rating_avg = ser_rating_arr.reduce(:+) / ser_rating_arr.length.to_f %>
+  </div>
 
+  <div class="col col-ms-4">
     <!-- overall ratings display -->
     <h2>Overall Rating <%= am_rating_avg + ser_rating_avg %>/10</h2>
+
     <h3>Ambiance rating:
       <!-- generating the stars -->
       <% 5.times do |x| %>
@@ -30,6 +33,7 @@
       <% end %>
       <!-- stars generated -->
     </h3>
+
     <h3>Service rating:
     <!-- generating the stars -->
       <% 5.times do |x| %>
@@ -45,32 +49,37 @@
       <% end %>
       <!-- stars generated -->
     </h3>
-
     <!-- reviews display -->
-    <h2>the reviews</h2>
+    <h2>Look at reviews left by others</h2>
     <% @reviews.each do |r| %>
-      <h3><%= r.user.email %></h3>
-      <p>Ambiance rating:
-        <% 5.times do |x| %>
-          <% if x < r.ambiance_rating %>
-            <i class="fa fa-star" aria-hidden="true"></i>
-          <% else %>
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-          <% end %>
-        <% end %>
-      </p>
-      <p>Service rating:
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://cdn.justluxe.com/articles/images/news/1996079_jetsmarterc.jpg');">
+      <div class="card-category">Card Category</div>
+      <div class="card-description">
+        <h3><%= r.user.email %></h3>
+        <p>Ambiance rating:
           <% 5.times do |x| %>
-            <% if x < r.service_rating %>
+            <% if x < r.ambiance_rating %>
               <i class="fa fa-star" aria-hidden="true"></i>
             <% else %>
               <i class="fa fa-star-o" aria-hidden="true"></i>
             <% end %>
           <% end %>
-      </p>
-      <p><%= r.description %></p>
+        </p>
+        <p>Service rating:
+            <% 5.times do |x| %>
+              <% if x < r.service_rating %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% else %>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+              <% end %>
+            <% end %>
+        </p>
+        <p><%= r.description %></p>
+      </div>
+      </div>
     <% end %>
-
+  </div>
+</div>
 
     <div id="map" style="width: 100%; height: 600px;"></div>
 
@@ -90,5 +99,4 @@
       <% end %>
     <% end %>
     <%= link_to "Book Now", new_flight_booking_path(@flight), class: "btn btn-danger btn-lg"%>
-  </div>
-</div>
+
