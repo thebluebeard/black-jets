@@ -1,7 +1,6 @@
 class FlightsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index,:show]
+  # skip_before_action :authenticate_user!, only: [:index,:show]
   def index
-
     if params
       @flights = Flight.where(["origin = ? and destination = ? and departure > ? and departure < ?",
           params[:origin],
