@@ -9,6 +9,7 @@ gem 'puma'
 gem 'rails', '5.0.6'
 gem 'redis'
 gem 'omniauth-facebook'
+gem 'devise'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
@@ -25,5 +26,4 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'devise'
 end
