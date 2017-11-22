@@ -1,24 +1,42 @@
 <div class="row">
-  <div class="col col-ms-4 col-sm-offset-1">
+  <div class="col col-xs-12 col-sm-8 left_side">
     <!-- display the flight info -->
-    <h1><%= @flight.origin %> - <%= @flight.destination %></h1>
+    <h1><%= @flight.origin %> &#8594; <%= @flight.destination %></h1>
     <h2><%= @flight.departure.strftime('%a, %d %b') %></h2>
-    <h3><%= @flight.user.username %>'s <%= @flight.jet.plane_model %></h3>
-    <p><%= @flight.origin %><%= @flight.departure.strftime('%I:%M %p') %></p>
-    <p><%= @flight.destination %><%= @flight.arrival.strftime('%I:%M %p') %></p>
+    <p><%= @flight.user.username %>'s <%= @flight.jet.plane_model %></p>
+    <p>Departing <%= @flight.origin %> at <%= @flight.departure.strftime('%I:%M %p') %></p>
+    <p>Arriving in <%= @flight.destination %> at <%= @flight.arrival.strftime('%I:%M %p') %></p>
 
     <!--start to calculate avg rating -->
     <% am_rating_arr = @reviews.map { |review| review.ambiance_rating } %>
     <% am_rating_avg = am_rating_arr.reduce(:+) / am_rating_arr.length.to_f %>
     <% ser_rating_arr = @reviews.map { |review| review.service_rating } %>
     <% ser_rating_avg = ser_rating_arr.reduce(:+) / ser_rating_arr.length.to_f %>
+
+    <div id="map" style="width: 100%; height: 600px;"></div>
+      <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          var handler = Gmaps.build('Google');
+          handler.buildMap({ internal: { id: 'map' } }, function() {
+            markers = handler.addMarkers(<%= raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            if (markers.length == 0) {
+              handler.getMap().setZoom(2);
+            } else if (markers.length == 1) {
+              handler.getMap().setZoom(14);
+            }
+          });
+        <% end %>
+      <% end %>
+    <%= link_to "Book Now", new_flight_booking_path(@flight), class: "btn btn-danger btn-lg"%>
   </div>
 
-  <div class="col col-ms-4">
+  <div class="col col-xs-12 col-sm-4">
     <!-- overall ratings display -->
     <h2>Overall Rating <%= am_rating_avg + ser_rating_avg %>/10</h2>
 
-    <h3>Ambiance rating:
+    <h5>Ambiance:
       <!-- generating the stars -->
       <% 5.times do |x| %>
         <% if am_rating_avg >= (x + 1) %>
@@ -32,9 +50,9 @@
         <% end %>
       <% end %>
       <!-- stars generated -->
-    </h3>
+    </h5>
 
-    <h3>Service rating:
+    <h5>Service:
     <!-- generating the stars -->
       <% 5.times do |x| %>
         <% if ser_rating_avg >= (x + 1) %>
@@ -48,15 +66,15 @@
         <% end %>
       <% end %>
       <!-- stars generated -->
-    </h3>
+    </h5>
     <!-- reviews display -->
-    <h2>Look at reviews left by others</h2>
+    <h3>Look at reviews left by others!</h3>
     <% @reviews.each do |r| %>
-    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://cdn.justluxe.com/articles/images/news/1996079_jetsmarterc.jpg');">
-      <div class="card-category">Card Category</div>
+    <div class="card review" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://cdn.justluxe.com/articles/images/news/1996079_jetsmarterc.jpg');">
+      <div class="card-category"></div>
       <div class="card-description">
-        <h3><%= r.user.email %></h3>
-        <p>Ambiance rating:
+        <p><%= r.user.email %></p>
+        <p>Ambiance:
           <% 5.times do |x| %>
             <% if x < r.ambiance_rating %>
               <i class="fa fa-star" aria-hidden="true"></i>
@@ -65,7 +83,7 @@
             <% end %>
           <% end %>
         </p>
-        <p>Service rating:
+        <p>Service:
             <% 5.times do |x| %>
               <% if x < r.service_rating %>
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -81,22 +99,6 @@
   </div>
 </div>
 
-    <div id="map" style="width: 100%; height: 600px;"></div>
 
-    <% content_for(:after_js) do %>
-      <%= javascript_tag do %>
-        var handler = Gmaps.build('Google');
-        handler.buildMap({ internal: { id: 'map' } }, function() {
-          markers = handler.addMarkers(<%= raw @hash.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-          if (markers.length == 0) {
-            handler.getMap().setZoom(2);
-          } else if (markers.length == 1) {
-            handler.getMap().setZoom(14);
-          }
-        });
-      <% end %>
-    <% end %>
-    <%= link_to "Book Now", new_flight_booking_path(@flight), class: "btn btn-danger btn-lg"%>
+
 
