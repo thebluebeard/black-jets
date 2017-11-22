@@ -1,6 +1,8 @@
-<h1>Pack your bags! your trip is booked asshole! </h1>
-<h2><%= @flight.origin %> - <%= @flight.destination %></h2>
-<h2><%= @flight.departure.strftime('%a, %d %b') %></h2>
-<h3>We have sent your flight details to your inbox. Wish you a pleasant journey!</h3>
+<div class="col col-ms-4 col-sm-offset-2">
+  <h1>Pack your bags! your trip is booked asshole! </h1>
+  <h2><%= @flight.origin %> - <%= @flight.destination %></h2>
+  <h2><%= @flight.departure.strftime('%a, %d %b') %></h2>
+  <h3>We have sent your flight details to your inbox. Wish you a pleasant journey!</h3>
 
-<%= link_to "go back", root_path %>
+  <%= link_to "go back", root_path %>
+</div>
