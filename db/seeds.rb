@@ -6,9 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Flight.delete_all
-# Jet.delete_all
-# User.delete_all
+
+Flight.delete_all
+Jet.delete_all
+User.delete_all
+
 
 JET_MODELS = ["Cessna 210","Focker 23","Concord 4","Bombarbier 210","Rafale","Turboprop 1","X-Wings 12","Dufourspitze 1","Kangchenjunga","Cerro Arripo"]
 MEAL = ["Vegetarian","Japanese","Indian","French","Italian"]
@@ -94,6 +96,7 @@ Jet.all.each do |jet|
 end
 
 puts 'Flights seeded'
+
 
 Flight.all.each do |flight|
   3.times do
