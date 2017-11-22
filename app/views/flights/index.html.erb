@@ -1,16 +1,9 @@
-<%= simple_form_for flights_path, method: :get do |f| %>
-<%= f.input :origin %>
-<%= f.input :destination %>
-
-<%= f.input :departure, as: :date %>
-<%= f.submit %>
-<% end %>
 
 
 
-
-
-
+<% if @flights.empty? %>
+  <h1>Sorry we don't have any result</h1>
+<% else %>
   <% @flights.each do |flight| %>
     <div>
       <h1><%= flight.jet.plane_model %></h1>
@@ -19,4 +12,5 @@
       <%= link_to "book", flight_path(flight) %>
     </div>
   <% end %>
+
 

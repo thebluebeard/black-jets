@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122044556) do
+ActiveRecord::Schema.define(version: 20171121194927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,14 @@ ActiveRecord::Schema.define(version: 20171122044556) do
   create_table "bookings", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "flight_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "surname"
+    t.string   "given_name"
+    t.string   "id_type"
+    t.string   "id_number"
+    t.datetime "date_of_birth"
+    t.string   "payment_method"
     t.index ["flight_id"], name: "index_bookings_on_flight_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
@@ -64,6 +70,7 @@ ActiveRecord::Schema.define(version: 20171122044556) do
     t.string   "img_url"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "user_id"
     t.index ["flight_id"], name: "index_reviews_on_flight_id", using: :btree
   end
 
