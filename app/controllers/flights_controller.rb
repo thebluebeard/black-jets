@@ -23,7 +23,7 @@ class FlightsController < ApplicationController
     @reviews = Review.where(flight_id: @flight.id)
 
     unless @flight.latitude.nil?
-      @hash = Gmaps4rails.build_markers(@flats) do |flat, marker|
+      @hash = Gmaps4rails.build_markers(@flight) do |flat, marker|
         marker.lat flat.latitude
         marker.lng flat.longitude
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
