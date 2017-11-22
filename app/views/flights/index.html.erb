@@ -1,12 +1,18 @@
 
-<% if @flights.empty? %>
-  <h1>Sorry we don't have any result</h1>
-<% else %>
-  <% @flights.each do |flight| %>
-    <div>
-      <h1><%= flight.jet.plane_model %></h1>
-      <h2><%= flight.departure %></h2>
-      <h2><%= flight.price %></h2>
-      <%= link_to "book", flight_path(flight) %>
-    </div>
-  <% end %>
+<div class="row">
+  <div class="col col-ms-4 col-sm-offset-4">
+    <% if @flights.empty? %>
+      <h1>Sorry we don't have any result</h1>
+    <% else %>
+      <% @flights.each do |flight| %>
+        <div>
+          <h1><%= flight.jet.plane_model %></h1>
+          <h2><%= flight.departure %></h2>
+          <h2><%= flight.price %></h2>
+          <%= link_to "book", flight_path(flight) %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
