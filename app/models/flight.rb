@@ -3,6 +3,9 @@ class Flight < ApplicationRecord
   belongs_to :jet
   has_many :reviews, dependent: :destroy
   has_many :bookings
+  has_many :airports
+  geocoded_by :origin
+  after_validation :geocode, if: :origin_changed?
 
   # def self.search(search)
   #   if search
@@ -13,3 +16,4 @@ class Flight < ApplicationRecord
   # end
 
 end
+

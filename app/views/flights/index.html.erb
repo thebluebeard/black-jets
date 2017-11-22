@@ -1,5 +1,4 @@
-<% if current_user.jet_owner %>
-<!-- flight owner version, not constrcted -->
+
   <% @flights.each do |flight| %>
     <div>
       <h1><%= flight.jet.model %></h1>
@@ -8,15 +7,4 @@
       <%= link_to "book", flight_path(flight) %>
     </div>
   <% end %>
-<% else %>
-<!-- non owner version -->
-  <% @flights.each do |flight| %>
-    <div>
-      <h1><%= flight.jet.model %></h1>
-      <h2><%= flight.departure %></h2>
-      <h2><%= flight.price %></h2>
-      <%= link_to "book", flight_path(flight) %>
-    </div>
-  <% end %>
-<% end %>
 
