@@ -1,12 +1,72 @@
-<h1>Model <%= @flight.jet.model %></h1>
-<h2>departure date <%= @flight.departure %></h2>
-<h2>arrival date <%= @flight.arrival %></h2>
+<!-- display the flight info -->
+<h1><%= @flight.origin %> - <%= @flight.destination %></h1>
+<h2><%= @flight.departure.strftime('%a, %d %b') %></h2>
+<h3><%= @flight.user.username %>'s <%= @flight.jet.plane_model %></h3>
+<p><%= @flight.origin %><%= @flight.departure.strftime('%I:%M %p') %></p>
+<p><%= @flight.destination %><%= @flight.arrival.strftime('%I:%M %p') %></p>
 
+<!--start to calculate avg rating -->
+<% am_rating_arr = @reviews.map { |review| review.ambiance_rating } %>
+<% am_rating_avg = am_rating_arr.reduce(:+) / am_rating_arr.length.to_f %>
+<% ser_rating_arr = @reviews.map { |review| review.service_rating } %>
+<% ser_rating_avg = ser_rating_arr.reduce(:+) / ser_rating_arr.length.to_f %>
+
+<!-- overall ratings display -->
+<h2>Overall Rating <%= am_rating_avg + ser_rating_avg %>/10</h2>
+<h3>Ambiance rating:
+  <!-- generating the stars -->
+  <% 5.times do |x| %>
+    <% if am_rating_avg >= (x + 1) %>
+      <i class="fa fa-star" aria-hidden="true"></i>
+    <% elsif am_rating_avg < (x + 0.5) && am_rating_avg > x %>
+      <i class="fa fa-star-half-o" aria-hidden="true"></i>
+    <% elsif am_rating_avg >= (x + 0.5) %>
+      <i class="fa fa-star" aria-hidden="true"></i>
+    <% else %>
+      <i class="fa fa-star-o" aria-hidden="true"></i>
+    <% end %>
+  <% end %>
+  <!-- stars generated -->
+</h3>
+<h3>Service rating:
+<!-- generating the stars -->
+  <% 5.times do |x| %>
+    <% if ser_rating_avg >= (x + 1) %>
+      <i class="fa fa-star" aria-hidden="true"></i>
+    <% elsif ser_rating_avg < (x + 0.5) && ser_rating_avg > x %>
+      <i class="fa fa-star-half-o" aria-hidden="true"></i>
+    <% elsif ser_rating_avg >= (x + 0.5) %>
+      <i class="fa fa-star" aria-hidden="true"></i>
+    <% else %>
+      <i class="fa fa-star-o" aria-hidden="true"></i>
+    <% end %>
+  <% end %>
+  <!-- stars generated -->
+</h3>
+
+<!-- reviews display -->
 <h2>the reviews</h2>
 <% @reviews.each do |r| %>
-  <p>r.ambiance_rating</p>
-  <p>r.service_rating</p>
-  <p>r.description</p>
+  <h3><%= r.user.email %></h3>
+  <p>Ambiance rating:
+    <% 5.times do |x| %>
+      <% if x < r.ambiance_rating %>
+        <i class="fa fa-star" aria-hidden="true"></i>
+      <% else %>
+        <i class="fa fa-star-o" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+  </p>
+  <p>Service rating:
+      <% 5.times do |x| %>
+        <% if x < r.service_rating %>
+          <i class="fa fa-star" aria-hidden="true"></i>
+        <% else %>
+          <i class="fa fa-star-o" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
+  </p>
+  <p><%= r.description %></p>
 <% end %>
 
-<%= link_to "confirm and pay", new_booking_path %>
+<%= link_to "Book Now", new_flight_booking_path(@flight), class: "btn btn-danger btn-lg"%>
