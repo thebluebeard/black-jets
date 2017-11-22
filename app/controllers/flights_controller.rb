@@ -1,11 +1,7 @@
 class FlightsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index,:show]
   def index
-    @flights = Flight.where(
-      origin: params[:origin],
-      destination: params[:destination],
-      departure: params[:departure],
-      )
+    @flights = Flight.all
   end
 
 

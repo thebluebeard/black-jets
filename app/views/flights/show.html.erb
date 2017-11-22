@@ -1,4 +1,4 @@
-<h1>Model <%= @flight.jet.model %></h1>
+<h1>Model <%= @flight.jet.plane_model %></h1>
 <h2>departure date <%= @flight.departure %></h2>
 <h2>arrival date <%= @flight.arrival %></h2>
 
@@ -9,7 +9,7 @@
   <p>r.description</p>
 <% end %>
 
-<%= link_to "confirm and pay", new_booking_path %>
+<%= link_to "confirm and pay", bookings_new_path %>
 
 <div id="map" style="width: 100%; height: 600px;"></div>
 
