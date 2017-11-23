@@ -1,28 +1,35 @@
 
 <div class="row">
-  <div class="col col-ms-4 col-sm-offset-2">
+  <div class="col col-xs-12 col-sm-4 col-sm-offset-4">
 
-  <!-- display flight info -->
-  <h1><%= @flight.origin %> - <%= @flight.destination %></h1>
-  <h2><%= @flight.departure.strftime('%a, %d %b') %></h2>
+    <!-- display flight info -->
+    <h1><%= @flight.origin %> <%= @flight.departure.strftime('%I:%M %p') %> &#8594; <%= @flight.destination %> <%= @flight.arrival.strftime('%I:%M %p') %></h1>
+    <h2><%= @flight.departure.strftime('%a, %d %b') %></h2>
 
-  <%= simple_form_for [@flight, @booking] do |f| %>
-      <%= f.input :surname, label: 'Surname' %>
-      <%= f.input :given_name, label: 'Given name'  %>
-      <%= f.input :id_type, label: 'Please provide ID type'  %>
-      <%= f.input :id_number, label: 'Please provide your ID number'  %>
-      <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 90,
-                                  end_year: Date.today.year - 12,
-                                  order: [:day, :month, :year], label: 'Date of Birth' %>
-      <!-- flight info-->
-      <h2>My Trip</h2>
-      <p><%= @flight.departure.strftime('%a, %d %b %Y') %></p>
-      <p><%= @flight.origin %><%= @flight.departure.strftime('%I:%M %p') %></p>
-      <p><%= @flight.destination %><%= @flight.arrival.strftime('%I:%M %p') %></p>
-      <h2>Total CNY <%= @flight.price %></h2>
-      <%= f.button :submit, 'Pay Now', class: "btn btn-danger" %>
-  <% end %>
+    <div>
+      <%= simple_form_for [@flight, @booking] do |f| %>
+          <%= f.input :surname, label: 'Surname' %>
+          <%= f.input :given_name, label: 'Given name'  %>
+          <%= f.input :id_type, label: 'Please provide travel ID type'  %>
+          <%= f.input :id_number, label: 'Please provide your travel ID number'  %>
+          <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 90,
+                                      end_year: Date.today.year - 12,
+                                      order: [:day, :month, :year], label: 'Date of Birth' %>
+          <%= f.button :submit, 'Save', class: "btn btn-primary btn-sm" %>
+      <% end %>
+    </div>
+        <!-- flight info-->
+    <div>
+      <h2>Payment method</h2>
+      <p>Credit Card</p>
+      <p>Online Payment</p>
+    </div>
 
-
+    <div>
+    <h2>Total CNY <%= @flight.price %></h2>
+    <%= simple_form_for [@flight, @booking] do |f| %>
+      <%= f.button :submit, 'Pay Now', class: "btn btn-danger btn-sm" %>
+    <% end %>
+    </div>
   </div>
 </div>
