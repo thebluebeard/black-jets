@@ -1,6 +1,5 @@
-<div class="row">
-  <div class="col col-ms-4 col-sm-offset-2">
-
+<div class="banner" style="background-image: url('https://i0.wp.com/yonevents.co.uk/wp-content/uploads/2015/05/esc-jets.jpg?fit=2000%2C650');">
+  <div class="banner-content">
     <form action="/flights" method="get">
       <% airports_selection = ["Paris","New York","Madrid","Oslo","New York","Chicago","Los Angeles","Bern","Shanghai","Beijing","Bangkok","Hanoi","Vientiane","Kuala Lumpur","Johannesburg","Buenos Aires"].map { |x| [x, x] } %>
       <label>From:</label>
@@ -17,6 +16,5 @@
 
       <button class="btn btn-primary"><%= submit_tag("Search") %></button>
     </form>
-
   </div>
 </div>
