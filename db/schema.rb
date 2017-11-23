@@ -35,13 +35,13 @@ ActiveRecord::Schema.define(version: 20171122044556) do
     t.integer  "jet_id"
     t.string   "origin"
     t.string   "destination"
+    t.datetime "departure"
+    t.datetime "arrival"
     t.integer  "price"
     t.string   "status"
-    t.integer  "capacity"
-    t.datetime "arrival"
-    t.datetime "departure"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "capacity"
     t.float    "latitude"
     t.float    "longitude"
     t.index ["jet_id"], name: "index_flights_on_jet_id", using: :btree
