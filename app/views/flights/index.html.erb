@@ -7,7 +7,7 @@
       <% @flights.each do |flight| %>
         <div>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://cdn.justluxe.com/articles/images/news/1996079_jetsmarterc.jpg');">
-            <p><%= link_to "Book", flight_path(flight), class: "book btn btn-primary btn-lg" %><p>
+            <p><%= link_to "SELECT", flight_path(flight), class: "book btn btn-select" %><p>
               <div class="card-category"><%= flight.jet.plane_model %></div>
               <div class="card-description">
                 <p>Departure Date and Time: <%= flight.departure %></p>
