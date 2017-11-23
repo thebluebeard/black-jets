@@ -11,10 +11,16 @@
 </head>
 <body>
   <%= render 'shared/navbar' %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
+  <%= render 'shared/flashes' %>
+<!--   <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p> -->
+  <div class="footer_cover">
+    <%= yield %>
+  </div>
+  <%= javascript_include_tag 'application' %>
 
   <%= yield(:after_js) %>
+  <%= render 'shared/footer' %>
 </body>
+
 </html>
