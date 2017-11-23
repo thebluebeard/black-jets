@@ -1,0 +1,10 @@
+  <%= simple_form_for jet do |f| %>
+  <%= f.input :plane_model %>
+  <%= f.input :seat_number %>
+  <%= f.input :production_year %>
+  <%= f.input :wifi %>
+  <%= f.input :meal %>
+  <%= f.input :description %>
+  <%= f.input :photos, as: :attachinary %>
+  <%= f.submit %>
+  <% end %>

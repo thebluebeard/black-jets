@@ -1,2 +1,15 @@
 <h1>Jets#index</h1>
 <p>Find me in app/views/jets/index.html.erb</p>
+
+  <% @jets.each do |j| %>
+<h2> Plane model: <%= j.plane_model %></h2>
+<p> User id: <%= j.user_id %> </p>
+<p> Capacity: <%= j.seat_number %></p>
+<p> Year: <%= j.production_year %></p>
+<p> Wifi: <%= j.wifi %></p>
+<p> Meals proposed: <%= j.meal %></p>
+<p> Description: <%= j.description %></p>
+<p> Last updated: <%= j.updated_at %></p>
+<p> <%= link_to "Edit jet", edit_jet_path(j) %></p>
+  <%= link_to "Delete jet", jet_path(j), method: :delete, data: { confirm: "Are you sure?"} %></p>
+  <% end %>
