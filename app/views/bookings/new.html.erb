@@ -1,22 +1,28 @@
-<!-- display flight info -->
-<h1><%= @flight.origin %> - <%= @flight.destination %></h1>
-<h2><%= @flight.departure.strftime('%a, %d %b') %></h2>
 
-<%= simple_form_for [@flight, @booking] do |f| %>
-    <%= f.input :surname %>
-    <%= f.input :given_name %>
-    <%= f.input :id_type %>
-    <%= f.input :id_number %>
-    <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 90,
-                                end_year: Date.today.year - 12,
-                                order: [:day, :month, :year]%>
-    <!-- flight info-->
-    <h2>My Trip</h2>
-    <p><%= @flight.departure.strftime('%a, %d %b %Y') %></p>
-    <p><%= @flight.origin %><%= @flight.departure.strftime('%I:%M %p') %></p>
-    <p><%= @flight.destination %><%= @flight.arrival.strftime('%I:%M %p') %></p>
-    <h2>Total CNY <%= @flight.price %></h2>
-    <%= f.button :submit, 'pay now' %>
-<% end %>
+<div class="row">
+  <div class="col col-ms-4 col-sm-offset-2">
+
+  <!-- display flight info -->
+  <h1><%= @flight.origin %> - <%= @flight.destination %></h1>
+  <h2><%= @flight.departure.strftime('%a, %d %b') %></h2>
+
+  <%= simple_form_for [@flight, @booking] do |f| %>
+      <%= f.input :surname %>
+      <%= f.input :given_name %>
+      <%= f.input :id_type %>
+      <%= f.input :id_number %>
+      <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 90,
+                                  end_year: Date.today.year - 12,
+                                  order: [:day, :month, :year]%>
+      <!-- flight info-->
+      <h2>My Trip</h2>
+      <p><%= @flight.departure.strftime('%a, %d %b %Y') %></p>
+      <p><%= @flight.origin %><%= @flight.departure.strftime('%I:%M %p') %></p>
+      <p><%= @flight.destination %><%= @flight.arrival.strftime('%I:%M %p') %></p>
+      <h2>Total CNY <%= @flight.price %></h2>
+      <%= f.button :submit, 'pay now' %>
+  <% end %>
 
 
+  </div>
+</div>
