@@ -2,7 +2,7 @@
   <div class="banner-content">
 
     <form action="/flights" method="get">
-      <% airports_selection = ["Paris","New York","Madrid","Oslo","New York","Chicago","Los Angeles","Bern","Shanghai","Beijing","Bangkok","Hanoi","Vientiane","Kuala Lumpur","Johannesburg","Buenos Aires"].map { |x| [x, x] } %>
+      <% airports_selection = ["---","Paris","New York","Madrid","Oslo","New York","Chicago","Los Angeles","Bern","Shanghai","Beijing","Bangkok","Hanoi","Vientiane","Kuala Lumpur","Johannesburg","Buenos Aires"].map { |x| [x, x] } %>
       <label>From:</label>
       <%= select_tag(:origin, options_for_select(airports_selection)) %>
 
@@ -14,9 +14,54 @@
 
       <label>Passenger</label>
       <%= select_tag(:passengers, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]])) %>
-
-      <button class="btn btn-primary"><%= submit_tag("Search") %></button>
+      <%= submit_tag("Search") %>
     </form>
 
+  </div>
+
+</div>
+
+
+<div class="homepage container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <!-- card 1 begin -->
+      <div class="card" style="background-image: url('https://tajemnaasie.cz/assets/uploads/sites/566/2017/09/cina-peking.jpg');">
+        <div class="card-category">Most Popular</div>
+        <div class="card-description">
+          <h2>Beijing</h2>
+          <p>Tue Nov 28 - Fri Dec 1</p>
+        </div>
+        <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
+        <a class="card-link" href="#" ></a>
+      </div>
+      <!-- card 1 end -->
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <!-- card 2 begin -->
+      <div class="card" style="background-image: url('https://ihg.scene7.com/is/image/ihg/intercontinental-changsha-5198533227-2x1?fit=fit,1&wid=2400&hei=1200');">
+        <div class="card-category">Mind-blowing Deal</div>
+        <div class="card-description">
+          <h2>Chengdu</h2>
+          <p>Mon Nov 27 - Thu Nov 30</p>
+        </div>
+        <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
+        <a class="card-link" href="#" ></a>
+      </div>
+      <!-- card 2 end -->
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <!-- card 3 begin -->
+      <div class="card" style="background-image: url('http://www.telegraph.co.uk/content/dam/Travel/2016/March/fastest-Tianjin.jpg?imwidth=480');">
+        <div class="card-category">Best Rated</div>
+        <div class="card-description">
+          <h2>Changsha</h2>
+          <p>Fri Dec 15 - Thu Dec 21</p>
+        </div>
+        <!-- <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"> -->
+        <a class="card-link" href="#" ></a>
+      </div>
+      <!-- card 3 end -->
+    </div>
   </div>
 </div>

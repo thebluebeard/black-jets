@@ -63,8 +63,6 @@ IMAGES = [
     generate_jets(a) if a.jet_owner
   end
 
-
-
   puts "OK! CREATING 3 FLIGHTS"
   3.times do
     Flight.create(user_id: User.first.id,
@@ -117,5 +115,7 @@ IMAGES = [
         description: "This is a really good flight and I enjoyed it a lot. Blackjet is an awesome service and I'll definitely use it again"
         )
     end
+
+
   end
   puts "SEEDING FINISHED!"
