@@ -1,11 +1,8 @@
-<% if @jet.photos.nil? %>
+<% if @jet.photos.empty? %>
 <p>"No pics yet"</p>
 <% else %>
 <% @jet.photos.each do |photo| %>
 <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
-<% end %>
-<% end %>
-
 <div class="card"
 style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
 url('<%= cl_image_path @jet.photos[0].path, height: 300, width: 400, crop: :fill %>')">
@@ -16,3 +13,6 @@ url('<%= cl_image_path @jet.photos[0].path, height: 300, width: 400, crop: :fill
 </div>
 <a class="card-link" href="#" ></a>
 </div>
+<% end %>
+<% end %>
+

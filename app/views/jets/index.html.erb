@@ -2,7 +2,7 @@
 <p>Find me in app/views/jets/index.html.erb</p>
 
   <% @jets.each do |j| %>
-<h2> Plane model: <%= j.plane_model %></h2>
+ <h2> Plane model: <%= link_to j.plane_model, jet_path(j) %></h2>
 <p> User id: <%= j.user_id %> </p>
 <p> Capacity: <%= j.seat_number %></p>
 <p> Year: <%= j.production_year %></p>
