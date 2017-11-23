@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+
   def new
     @booking = Booking.new
     @flight = Flight.find(params[:flight_id])
@@ -9,6 +10,7 @@ class BookingsController < ApplicationController
     # @booking.user_id = current_user.id
     @flight = Flight.find(params[:flight_id])
     @booking.flight = @flight
+    @booking.user = current_user
     @booking.save
   end
 

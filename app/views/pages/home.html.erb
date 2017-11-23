@@ -2,7 +2,7 @@
   <div class="col col-ms-4 col-sm-offset-2">
 
     <form action="/flights" method="get">
-      <% airports_selection = ["Paris","New York","Madrid","Oslo","New York","Chicago","Los Angeles","Bern","Shanghai","Beijing","Bangkok","Hanoi","Vientiane","Kuala Lumpur","Johannesburg","Buenos Aires"].map { |x| [x, x] } %>
+      <% airports_selection = ["---","Paris","New York","Madrid","Oslo","New York","Chicago","Los Angeles","Bern","Shanghai","Beijing","Bangkok","Hanoi","Vientiane","Kuala Lumpur","Johannesburg","Buenos Aires"].map { |x| [x, x] } %>
       <label>From:</label>
       <%= select_tag(:origin, options_for_select(airports_selection)) %>
 
@@ -16,7 +16,19 @@
       <%= select_tag(:passengers, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]])) %>
 
       <%= submit_tag("Search") %>
+
+    <!-- if we have time we can use simple form
     </form>
+    <% @flight = Flight.new %>
+    <%= simple_form_for(@flight, html: {method: "get"}) do |f| %>
+        <%= f.input :origin %>
+        <%= f.input :destination %>
+        <%= f.input :departure, as: :date %>
+        <%= f.button :submit, label: "search" %>
+
+    <% end %>
+  -->
+
 
   </div>
 </div>

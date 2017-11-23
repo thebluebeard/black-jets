@@ -100,11 +100,11 @@ puts 'Flights seeded'
 
 
 Flight.all.each do |flight|
-  3.times do
-    Booking.create(user_id: User.all.sample.id,
-      flight_id: flight.id
-    )
-  end
+  # 3.times do
+  #   Booking.create(user_id: User.all.sample.id,
+  #     flight_id: flight.id
+  #   )
+  # end
   5.times do
     Review.create(user_id: User.all.sample.id,
       flight_id: flight.id,
