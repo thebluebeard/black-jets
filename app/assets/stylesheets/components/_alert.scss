@@ -6,7 +6,16 @@
   margin: 0;
   text-align: center;
   color: white;
+  border: none;
 }
+// .alert:empty {
+//   display:none;
+// }
+
+// .notice:empty {
+//   display:none;
+// }
+
 .alert-info {
   background: $green;
 }
