@@ -1,10 +1,17 @@
-  <%= simple_form_for jet do |f| %>
-  <%= f.input :plane_model %>
-  <%= f.input :seat_number %>
-  <%= f.input :production_year %>
-  <%= f.input :wifi %>
-  <%= f.input :meal %>
-  <%= f.input :description %>
-  <%= f.input :photos, as: :attachinary %>
-  <%= f.submit %>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <%= simple_form_for jet do |f| %>
+      <%= f.input :plane_model %>
+      <%= f.input :seat_number %>
+      <%= f.input :production_year %>
+      <%= f.input :wifi %>
+      <%= f.input :meal %>
+      <%= f.input :description %>
+      <%= f.input :photos, as: :attachinary %>
+      <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

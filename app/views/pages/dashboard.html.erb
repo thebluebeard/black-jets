@@ -1,4 +1,9 @@
 <% @bookings.each do |b| %>
-  <p><%= b.flight.departure %></p>
-  <p><%= b.flight.id %></p>
+  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://cdn.justluxe.com/articles/images/news/1996079_jetsmarterc.jpg');">
+      <div class="card-category"><%= b.flight.user.username %>'s <%= b.flight.jet.plane_model %></div>
+      <div class="card-description">
+        <p><%= b.flight.departure %></p>
+        <p><%= b.flight.id %></p>
+      </div>
+  </div>
 <% end %>
