@@ -1,3 +1,5 @@
+<h2>Flights from <%= @flights.first.origin %> to <%= @flights.first.destination %></h2>
+
 
 <div class="row">
   <div class="col col-xs-12 col-sm-8 col-sm-offset-2">
@@ -13,9 +15,10 @@
             <p><%= link_to "SELECT", flight_path(flight), class: "book btn btn-select" %><p>
               <div class="card-category"><%= flight.jet.plane_model %></div>
               <div class="card-description">
-                <p>Departure Date and Time: <%= flight.departure %></p>
-                <p>Total Price: <%= flight.price %>RMB</p>
+                <h2>Total Price: <%= flight.price %>RMB</h2>
               </div>
+              <p><%= flight.departure.strftime("%e %b %Y %H:%M%p") %> <%= flight.origin %></p>
+              <p><%= flight.arrival.strftime("%e %b %Y %H:%M%p") %> <%= flight.destination %></p>
           </div>
         </div>
       <% end %>
