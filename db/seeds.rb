@@ -36,17 +36,18 @@ IMAGES = [
   "https://ecsjets.com/images/header_plane3.jpg"]
 
   # do not delete these mother fucker!!!
-  a = User.create(username: "benthefucker",
-      email: "ben@gmail.com",
+  a = User.create(username: "bentheman",
+      email: "benoitmrejen@gmail.com",
       password:"123456",
       phone: Faker::PhoneNumber.cell_phone,
       jet_owner: true
       # first_name: "Ben"
       # last_name: "The Man"
       )
+  generate_jets(a)
 
-  User.create(username: "benthefucker",
-      email: "harrison@gmail.com",
+  User.create(username: "harrisontheman",
+      email: "cj_918@hotmail.com",
       password:"123456",
       phone: Faker::PhoneNumber.cell_phone,
       jet_owner: false
@@ -71,18 +72,18 @@ IMAGES = [
 
 
 
-  puts "CREATING 6 USERS AND 4 JET OWNERS"
+  # puts "CREATING 6 USERS AND 4 JET OWNERS"
 
-  10.times do |x|
-    puts "CREATING USER #{x} OF 10"
-    a = User.create(username: Faker::Internet.user_name,
-      email: Faker::Internet.email,
-      password:"123456",
-      phone: Faker::PhoneNumber.cell_phone,
-      jet_owner: x < 4
-      )
-    generate_jets(a) if a.jet_owner
-  end
+  # 10.times do |x|
+  #   puts "CREATING USER #{x} OF 10"
+  #   a = User.create(username: Faker::Internet.user_name,
+  #     email: Faker::Internet.email,
+  #     password:"123456",
+  #     phone: Faker::PhoneNumber.cell_phone,
+  #     jet_owner: x < 4
+  #     )
+  #   generate_jets(a) if a.jet_owner
+  # end
 
   puts "OK! CREATING 3 FLIGHTS"
   3.times do

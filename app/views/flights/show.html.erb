@@ -17,7 +17,7 @@
       <% puts ser_rating_avg %>
     <% end %>
 
-
+    <!--
     <div id="map" style="width: 100%; height: 600px;"></div>
       <% content_for(:after_js) do %>
       <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
@@ -39,7 +39,7 @@
       <% end %>
       <%= link_to "Book Now", new_flight_booking_path(@flight), class: "btn btn-danger btn-lg"%>
   </div>
-
+-->
   <div class="col col-xs-12 col-sm-4">
     <!-- overall ratings display -->
     <% unless @reviews.empty? %>
