@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
-
-  get 'bookings/new'
-
-  get 'bookings/create'
-
   devise_for :users,
-    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   root to: 'pages#home'
-  resources :jets, only: [:index, :new, :create, :destroy]
+  resources :jets
   resources :flights do
     resources :reviews, only: [:new, :create]
+    resources :bookings, only: [:new, :create, :destroy]
   end
+  mount Attachinary::Engine => "/attachinary"
+
+  get 'pages/dashboard', 'pages#dashboard'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

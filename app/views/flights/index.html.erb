@@ -1,22 +1,26 @@
-<% if current_user.jet_owner %>
-<!-- flight owner version, not constrcted -->
-  <% @flights.each do |flight| %>
-    <div>
-      <h1><%= flight.jet.model %></h1>
-      <h2><%= flight.departure %></h2>
-      <h2><%= flight.price %></h2>
-      <%= link_to "book", flight_path(flight) %>
-    </div>
-  <% end %>
-<% else %>
-<!-- non owner version -->
-  <% @flights.each do |flight| %>
-    <div>
-      <h1><%= flight.jet.model %></h1>
-      <h2><%= flight.departure %></h2>
-      <h2><%= flight.price %></h2>
-      <%= link_to "book", flight_path(flight) %>
-    </div>
-  <% end %>
-<% end %>
+
+<div class="row">
+  <div class="col col-xs-12 col-sm-8 col-sm-offset-2">
+    <% if @flights.empty? %>
+      <h1>Sorry we don't have any result</h1>
+    <% else %>
+      <% unless @message.empty? %>
+        <%= @message %>
+      <% end %>
+      <% @flights.each do |flight| %>
+        <div>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://cdn.justluxe.com/articles/images/news/1996079_jetsmarterc.jpg');">
+            <p><%= link_to "SELECT", flight_path(flight), class: "book btn btn-select" %><p>
+              <div class="card-category"><%= flight.jet.plane_model %></div>
+              <div class="card-description">
+                <p>Departure Date and Time: <%= flight.departure %></p>
+                <p>Total Price: <%= flight.price %>RMB</p>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
 

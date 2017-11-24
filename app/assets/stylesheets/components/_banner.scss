@@ -1,0 +1,58 @@
+.banner {
+  margin-top: 0;
+  color: #303030;
+  text-align: center;
+  // height: 45vh;
+  height: 50vh;
+  background-size: cover !important;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-attachment: fixed;
+}
+
+.imageContent{
+    background: url('https://i0.wp.com/yonevents.co.uk/wp-content/uploads/2015/05/esc-jets.jpg?fit=2000%2C650') no-repeat center center;
+    background-size: auto 100%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+.banner h1 {
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+.banner p {
+  font-size: 25px;
+  font-weight: lighter;
+  color: rgb(255, 255, 255);
+  opacity: 0.6;
+  margin-bottom: 30px;
+}
+.banner label {
+  color: white;
+}
+
+.banner form {
+  opacity: 0.8;
+  position: relative;
+}
+
+.form_flex {
+  display: flex;
+  // position: absolute;
+  // width: 80vw;
+  // bottom: 10px;
+  justify-content: space-between;
+}
+
+
+.banner .banner-content {
+  // position: absolute;
+  // top: 10px;
+}
+
