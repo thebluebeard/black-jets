@@ -1,27 +1,27 @@
 <div class="banner imageContent">
-  <div class="banner-content">
+  <div class="banner-content overlay">
 
 
-    <h1>Book a private jet, start a quality life</h1>
-    <div class="search">
-      <div class="form-inline">
+    <h1>EVERYONE'S PRIVATE JET</h1>
+    <!-- <div class="search"> -->
+      <!-- <div class="form-inline"> -->
         <form action="/flights" method="get">
           <div class="form_flex">
           <% airports_selection = ["---","Paris","New York","Madrid","Oslo","New York","Chicago","Los Angeles","Bern","Shanghai","Beijing","Bangkok","Hanoi","Vientiane","Kuala Lumpur","Johannesburg","Buenos Aires"].map { |x| [x, x] } %>
 
-          <%= select_tag(:origin, options_for_select(airports_selection), prompt: "Select Airport of Departure") %>
+          <%= select_tag(:origin, options_for_select(airports_selection), prompt: "Select Airport of Departure", :class => 'field_width') %>
 
-          <%= select_tag(:destination, options_for_select(airports_selection), prompt: "Select Airport of Arrival") %>
+          <%= select_tag(:destination, options_for_select(airports_selection), prompt: "Select Airport of Arrival",  :class => 'field_width') %>
 
-          <input type="date" name="departure" id="departure" class="date_dropdown" >
+          <input type="date" name="departure" id="departure" class="date_dropdown" placeholder="Select a date...">
 
-          <%= select_tag(:passengers, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]]), prompt: "# of Travelers") %>
-          <%= submit_tag("Search") %>
+          <%= select_tag(:passengers, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]]), prompt: "# of Travelers",  :class => 'field_width') %>
+          <%= submit_tag("Search", :class => 'btn btn-primary')  %>
           </div>
         </form>
-      </div>
+      <!-- </div> -->
 
-    </div>
+    <!-- </div> -->
   </div>
 
 </div>
@@ -30,7 +30,7 @@
 
 <div class="container">
   <div class="row" style="padding-top: 0px">
-    <h2 style="text-align: center">Featured Flights</h2>
+    <h2 style="text-align: center">FEATURED FLIGHTS</h2>
     <div class="col-xs-12 col-sm-4">
       <!-- card 1 begin -->
       <div class="card" style="background-image: url('https://tajemnaasie.cz/assets/uploads/sites/566/2017/09/cina-peking.jpg');">
