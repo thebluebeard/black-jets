@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :flights
   has_many :bookings
   has_many :reviews
+  after_create :send_welcome_email
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
@@ -28,6 +29,11 @@ class User < ApplicationRecord
     end
 
     return user
+  end
+
+  private
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
   end
 
 
