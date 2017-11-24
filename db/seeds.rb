@@ -35,6 +35,27 @@ IMAGES = [
   "https://i.pinimg.com/originals/e6/0e/01/e60e01bfa3a02d45a0547430c5b5ad64.jpg",
   "https://ecsjets.com/images/header_plane3.jpg"]
 
+  # do not delete these mother fucker!!!
+  a = User.create(username: "benthefucker",
+      email: "ben@gmail.com",
+      password:"123456",
+      phone: Faker::PhoneNumber.cell_phone,
+      jet_owner: true
+      # first_name: "Ben"
+      # last_name: "The Man"
+      )
+
+  User.create(username: "benthefucker",
+      email: "harrison@gmail.com",
+      password:"123456",
+      phone: Faker::PhoneNumber.cell_phone,
+      jet_owner: false
+      # first_name: "Harrison"
+      # last_name: "The Man"
+      )
+  # till here don't touch, i need it for testing
+
+
   def generate_jets(user)
     Jet.create(user_id: user.id,
       plane_model: JET_MODELS.sample,
