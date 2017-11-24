@@ -10,7 +10,13 @@ class User < ApplicationRecord
   has_many :reviews
   after_create :send_welcome_email
 
-  def self.find_for_facebook_oauth(auth)
+
+  has_many :reviews
+  after_create :send_welcome_email
+  validates :email, uniqueness: true
+
+    def self.find_for_facebook_oauth(auth)
+
     user_params = auth.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
     user_params[:facebook_picture_url] = auth.info.image
