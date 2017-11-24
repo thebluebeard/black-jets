@@ -2,10 +2,18 @@ class FlightsController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:index,:show]
   def index
     if params
+      @message = ""
       @flights = Flight.all
       @flights = @flights.select{|f| f.origin == params[:origin]} if params[:origin]
       @flights = @flights.select{|f| f.destination == params[:destination]} if params[:destination]
+      flights_matched = @flights
       @flights = @flights.select{|f| f.departure > params[:departure].to_datetime && f.departure < params[:departure].to_datetime + 1} if !params[:departure].empty?
+      # check if we have a flight available at a different time
+      if flights_matched.empty? == false && @flights.empty?
+        @flights = flights_matched.select{|f| f.departure > params[:departure].to_datetime - 3 && f.departure < params[:departure].to_datetime + 3} if !params[:departure].empty?
+        @message = "Sorry we don't have what you wanted, but we have recommended some flights you might be interested in" unless @flights.empty?
+        puts @message
+      end
     else
       @flights = Flight.all
     end

@@ -4,6 +4,9 @@
     <% if @flights.empty? %>
       <h1>Sorry we don't have any result</h1>
     <% else %>
+      <% unless @message.empty? %>
+        <%= @message %>
+      <% end %>
       <% @flights.each do |flight| %>
         <div>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://cdn.justluxe.com/articles/images/news/1996079_jetsmarterc.jpg');">
