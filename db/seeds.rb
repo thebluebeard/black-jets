@@ -34,6 +34,18 @@ IMAGES = [
   "https://www.aircharter.com/wp-content/uploads/2014/10/CH-650.png",
   "https://i.pinimg.com/originals/e6/0e/01/e60e01bfa3a02d45a0547430c5b5ad64.jpg",
   "https://ecsjets.com/images/header_plane3.jpg"]
+  def generate_jets(user)
+    Jet.create(user_id: user.id,
+      plane_model: JET_MODELS.sample,
+      seat_number: rand(7..20),
+      production_year: rand(1990..2017),
+      wifi: rand > 0.5,
+      meal: MEAL.sample,
+      description: "A plane with wings",
+      photo_urls: IMAGES.sample(3)
+      )
+    puts "Jet created for jet owner #{user.id}"
+  end
 
 
 
@@ -69,8 +81,6 @@ IMAGES = [
       # first_name: "Harrison"
       # last_name: "The Man"
       )
-
-
   # till here don't touch, i need it for testing
 
   # puts "CREATING 6 USERS AND 4 JET OWNERS"
