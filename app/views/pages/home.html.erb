@@ -1,32 +1,38 @@
 <div class="banner imageContent">
   <div class="banner-content">
 
-    <form action="/flights" method="get">
 
-      <% airports_selection = ["---","Paris","New York","Madrid","Oslo","New York","Chicago","Los Angeles","Bern","Shanghai","Beijing","Bangkok","Hanoi","Vientiane","Kuala Lumpur","Johannesburg","Buenos Aires"].map { |x| [x, x] } %>
-      <!-- <label>From:</label> -->
-      <div class="form_flex">
-      <%= select_tag(:origin, options_for_select(airports_selection), prompt: "Select Airport of Departure", style: "width:300px") %>
+    <h1>Book a private jet, start a quality life</h1>
+    <div class="search">
+      <div class="form-inline">
+        <form action="/flights" method="get">
+          <% airports_selection = ["---","Paris","New York","Madrid","Oslo","New York","Chicago","Los Angeles","Bern","Shanghai","Beijing","Bangkok","Hanoi","Vientiane","Kuala Lumpur","Johannesburg","Buenos Aires"].map { |x| [x, x] } %>
+          <label>From:</label>
+          <%= select_tag(:origin, options_for_select(airports_selection)) %>
 
-      <!-- <label>To:</label> -->
-      <%= select_tag(:destination, options_for_select(airports_selection), prompt: "Select Airport of Destination", style: "width:300px") %>
+          <label>To:</label>
+          <%= select_tag(:destination, options_for_select(airports_selection)) %>
 
-      <!-- <label for="departure">Date</label> -->
-      <input type="date" name="departure" id="departure">
+          <label for="departure">Date</label>
+          <input type="date" name="departure" id="departure">
 
-      <!-- <label>Passenger</label> -->
-      <%= select_tag(:passengers, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]]), prompt: "# of Travelers", style: "width:300px", id: "passenger_dropdown") %>
-      <%= submit_tag("Search") %>
+          <label>Passenger</label>
+          <%= select_tag(:passengers, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]])) %>
+          <%= submit_tag("Search") %>
+        </form>
       </div>
-    </form>
 
+    </div>
   </div>
 
 </div>
 
 
-<div class="homepage container">
-  <div class="row">
+
+
+<div class="container">
+  <div class="row" style="padding-top: 0px">
+    <h2 style="text-align: center">Featured Flights</h2>
     <div class="col-xs-12 col-sm-4">
       <!-- card 1 begin -->
       <div class="card" style="background-image: url('https://tajemnaasie.cz/assets/uploads/sites/566/2017/09/cina-peking.jpg');">
