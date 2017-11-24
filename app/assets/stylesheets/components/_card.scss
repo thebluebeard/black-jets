@@ -10,6 +10,7 @@
   font-weight: bold;
   position: relative;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 
@@ -41,10 +42,9 @@
   text-transform: uppercase;
 }
 .card-description {
-  margin-left: 15px;
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 0px;
+  left: 0px;
 }
 .card .book {
   position: absolute;
@@ -52,12 +52,18 @@
   right: 10px;
 }
 .card-description h2 {
-  font-size: 24px;
+  font-size: 72px;
+    font-family: Karla;
+    font-weight: bold;
+    opacity: 0.6;
+    text-shadow: none;
+    margin-top: 50px;
 }
 .card-description p {
   font-size: 14px;
   opacity: 0.7;
   font-weight: lighter;
+  margin-bottom: 5px;
 }
 .card-link {
   position: absolute;
@@ -69,6 +75,12 @@
   background: black;
   opacity: 0;
 }
+
+.text-center.feature {
+  font-family:Karla;
+  font-weight:bold;
+}
+
 .card-link:hover {
   opacity: 0.1;
 }
