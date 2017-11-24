@@ -1,18 +1,18 @@
-
-<div class="row">
-  <div class="col col-ms-4 col-sm-offset-2">
-    <h1>New Flight</h1>
-    <%= simple_form_for @flight do |f| %>
-      <%= f.input :jet_id, collection: @jets, label_method: :plane_model, value_method: :id, label: "Jet" %>
-      <%= f.input :origin, :collection => ["---","Paris","New York","Madrid","Oslo","New York","Chicago","Los Angeles","Bern","Shanghai","Beijing","Bangkok","Hanoi","Vientiane","Kuala Lumpur","Johannesburg","Buenos Aires"]%>
-      <%= f.input :destination, :collection => ["---","Paris","New York","Madrid","Oslo","New York","Chicago","Los Angeles","Bern","Shanghai","Beijing","Bangkok","Hanoi","Vientiane","Kuala Lumpur","Johannesburg","Buenos Aires"]%>
-      <%= f.input :departure %>
-      <%= f.input :arrival %>
-      <%= f.input :capacity, collection: 1..10 %>
-      <!-- ideally this should be no more than the jet capacity -->
-      <%= f.input :price, label: "Price(RMB)" %>
-      <%= f.button :submit %>
-    <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h1>New Flight</h1>
+      <%= simple_form_for @flight do |f| %>
+        <%= f.input :jet_id, collection: @jets, label_method: :plane_model, value_method: :id, label: "Jet" %>
+        <%= f.input :origin, :collection => ["---","Paris","New York","Madrid","Oslo","New York","Chicago","Los Angeles","Bern","Shanghai","Beijing","Bangkok","Hanoi","Vientiane","Kuala Lumpur","Johannesburg","Buenos Aires"]%>
+        <%= f.input :destination, :collection => ["---","Paris","New York","Madrid","Oslo","New York","Chicago","Los Angeles","Bern","Shanghai","Beijing","Bangkok","Hanoi","Vientiane","Kuala Lumpur","Johannesburg","Buenos Aires"]%>
+        <%= f.input :departure %>
+        <%= f.input :arrival %>
+        <%= f.input :capacity, collection: 1..10 %>
+        <!-- ideally this should be no more than the jet capacity -->
+        <%= f.input :price, label: "Price(RMB)" %>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
   </div>
 </div>
-

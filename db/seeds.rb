@@ -35,26 +35,6 @@ IMAGES = [
   "https://i.pinimg.com/originals/e6/0e/01/e60e01bfa3a02d45a0547430c5b5ad64.jpg",
   "https://ecsjets.com/images/header_plane3.jpg"]
 
-  # do not delete these mother fucker!!!
-  a = User.create(username: "bentheman",
-      email: "benoitmrejen@gmail.com",
-      password:"123456",
-      phone: Faker::PhoneNumber.cell_phone,
-      jet_owner: true
-      # first_name: "Ben"
-      # last_name: "The Man"
-      )
-  generate_jets(a)
-
-  User.create(username: "harrisontheman",
-      email: "cj_918@hotmail.com",
-      password:"123456",
-      phone: Faker::PhoneNumber.cell_phone,
-      jet_owner: false
-      # first_name: "Harrison"
-      # last_name: "The Man"
-      )
-  # till here don't touch, i need it for testing
 
 
   def generate_jets(user)
@@ -70,7 +50,28 @@ IMAGES = [
     puts "Jet created for jet owner #{user.id}"
   end
 
+   # do not delete these mother fucker!!!
+  a = User.create(username: "Lantheman",
+      email: "benoitmrejen@gmail.com",
+      password:"123456",
+      phone: Faker::PhoneNumber.cell_phone,
+      jet_owner: true
+      # first_name: "Ben"
+      # last_name: "The Man"
+      )
+  generate_jets(a)
+  puts "i'm here"
+  User.create(username: "harrisontheman",
+      email: "cj_918@hotmail.com",
+      password:"123456",
+      phone: Faker::PhoneNumber.cell_phone,
+      jet_owner: false
+      # first_name: "Harrison"
+      # last_name: "The Man"
+      )
 
+
+  # till here don't touch, i need it for testing
 
   # puts "CREATING 6 USERS AND 4 JET OWNERS"
 
@@ -99,36 +100,49 @@ IMAGES = [
       )
   end
 
-  jetcount = Jet.count
-  Jet.all.each_with_index do |jet, i|
-    puts "CREATING 10 FLIGHTS FOR JET NO. #{i} OF #{jetcount}"
-    10.times do
-      a = Faker::Date.forward(rand(3..15))
-      time = "#{rand(6..13)}:#{rand(0..59)}".to_time
-
-      Flight.create(user_id: jet.user.id,
-        jet_id: jet.id,
-        origin: AIRPORTS.sample,
-        destination: AIRPORTS.sample,
-        departure: Faker::Time.forward(23, :morning),
-        arrival: Faker::Time.forward(23, :afternoon),
-        price: rand(4_000...30_000),
-        capacity: 10,
-        status: "On time"
-        )
-    end
+    3.times do
+    Flight.create(user_id: User.first.id,
+      jet_id: Jet.first.id,
+      origin: "Beijing",
+      destination: "Shanghai",
+      departure: "2017/12/10 14:00:00".to_datetime,
+      arrival: "2017/12/10 16:00:00".to_datetime,
+      price: rand(4_000...30_000),
+      capacity: 10,
+      status: "On time"
+      )
   end
+
+  # jetcount = Jet.count
+  # Jet.all.each_with_index do |jet, i|
+  #   puts "CREATING 10 FLIGHTS FOR JET NO. #{i} OF #{jetcount}"
+  #   10.times do
+  #     a = Faker::Date.forward(rand(3..15))
+  #     time = "#{rand(6..13)}:#{rand(0..59)}".to_time
+
+  #     Flight.create(user_id: jet.user.id,
+  #       jet_id: jet.id,
+  #       origin: AIRPORTS.sample,
+  #       destination: AIRPORTS.sample,
+  #       departure: Faker::Time.forward(23, :morning),
+  #       arrival: Faker::Time.forward(23, :afternoon),
+  #       price: rand(4_000...30_000),
+  #       capacity: 10,
+  #       status: "On time"
+  #       )
+  #   end
+  # end
 
   puts 'OK! CREATING BOOKINGS'
 
   flight_count = Flight.all.count
   Flight.all.each_with_index do |flight, i|
-    puts "Seeding Bookings and Reviews for flight no. #{i} of #{flight_count}"
-    3.times do
-      Booking.create(user_id: User.all.sample.id,
-        flight_id: flight.id
-        )
-    end
+    # puts "Seeding Bookings and Reviews for flight no. #{i} of #{flight_count}"
+    # 3.times do
+    #   Booking.create(user_id: User.all.sample.id,
+    #     flight_id: flight.id
+    #     )
+    # end
     5.times do
       Review.create(user_id: User.all.sample.id,
         flight_id: flight.id,
