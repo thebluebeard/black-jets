@@ -11,6 +11,14 @@
   justify-content: center;
   // background-attachment: fixed;
 }
+
+.imageContent{
+    background: url('https://i0.wp.com/yonevents.co.uk/wp-content/uploads/2015/05/esc-jets.jpg?fit=2000%2C650') no-repeat center center;
+    background-size: auto 100%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
 .banner h1 {
   font-size: 50px;
   font-weight: bold;
@@ -29,4 +37,15 @@
 
 .banner form {
   opacity: 0.8;
+  position: relative;
 }
+.form_flex {
+  display: flex;
+  position: absolute;
+  width: 80vw;
+  bottom: 10px;
+  justify-content: space-between;
+}
+
+
+
